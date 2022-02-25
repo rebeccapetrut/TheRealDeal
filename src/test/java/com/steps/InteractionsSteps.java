@@ -35,4 +35,27 @@ public class InteractionsSteps extends BaseSteps {
     public void rearrangeNumbersFromList(){
         interactionsPage.rearrangeNumbersFromList();
     }
+
+    @Step
+    public void clickOnSelectableButton(){
+        interactionsPage.clickOnSelectableButton();
+    }
+
+    @Step
+    public void clickOnFirstSelectableField(){
+        interactionsPage.clickOnFirstSelectableField();
+    }
+
+    @Step
+    public void clickOnResizableButton(){
+        interactionsPage.clickOnResizableButton();
+    }
+
+    @Step
+    public void resizeTheFirstFieldWithRestrictions(){
+        interactionsPage.resizeTheFirstFieldWithRestrictions();
+    }
+
 }
+
+

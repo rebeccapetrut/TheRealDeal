@@ -28,6 +28,15 @@ public class InteractionsPage extends BasePage {
     @FindBy(css = "#verticalListContainer :first-child")
     private WebElementFacade firstSelectableField;
 
+    @FindBy(css = ".element-list.collapse.show li:nth-child(3)")
+    private WebElementFacade resizableButton;
+
+    @FindBy(css = "#resizableBoxWithRestriction span")
+    private WebElementFacade resizableWithRestrictionsButton;
+
+    @FindBy(css = "#resizable span")
+    private WebElementFacade resizableWithoutRestrictionsButton;
+
 
 
     public void clickOnInteractionsButton(){
@@ -63,6 +72,15 @@ public class InteractionsPage extends BasePage {
 //    public boolean verifyIfTheFieldIsSelected(){
 //        return firstSelectableField.
 //    }
+
+    public void clickOnResizableButton(){
+        clickOn(resizableButton);
+    }
+
+    public void resizeTheFirstFieldWithRestrictions(){
+        withAction().clickAndHold(resizableWithRestrictionsButton).build().perform();
+        withAction().moveToElement(resizableWithRestrictionsButton).moveByOffset(445,252).release().build().perform();
+    }
 
 
 

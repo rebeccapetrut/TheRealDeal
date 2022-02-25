@@ -16,5 +16,23 @@ public class InteractionsTest extends BaseTest {
     }
 
 
+    //asert
+    @Test
+    public void clickOnTheFirstSelectableField(){
+        interactionsSteps.clickOnInteractionsButton();
+        interactionsSteps.scrollThePageDown();
+        interactionsSteps.clickOnSelectableButton();
+        interactionsSteps.clickOnFirstSelectableField();
+    }
+
+    @Test
+    public void resizeTheFieldWithRestrictionsTest(){
+        interactionsSteps.clickOnInteractionsButton();
+        interactionsSteps.scrollThePageDown();
+        interactionsSteps.clickOnResizableButton();
+        interactionsSteps.resizeTheFirstFieldWithRestrictions();
+    }
+
+
 
 }
