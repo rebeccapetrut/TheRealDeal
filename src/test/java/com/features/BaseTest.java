@@ -35,6 +35,9 @@ public class BaseTest {
     @Steps
     protected InteractionsSteps interactionsSteps;
 
+    @Steps
+    protected BookStoreApplicationSteps bookStoreApplicationSteps;
+
 
 
 

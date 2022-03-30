@@ -52,12 +52,13 @@ public class FormsPage extends BasePage {
     @FindBy(css = ".css-11unzgr")
     private WebElementFacade stateMenuOption;
 
-    @FindBy(id = "react-select-5-option")
+    @FindBy(css = ".css-11unzgr [id*='react']")
     private List<WebElementFacade> listOfStates;
 
-//    #react-select-5-option-0
+    @FindBy(css = ".css-11unzgr [id*='react']")
+    private List<WebElementFacade> listOfCities;
 
-    @FindBy(id = "react-select-4-input")
+    @FindBy(css = "#city svg")
     private WebElementFacade cityField;
 
     @FindBy(id = "submit")
@@ -121,25 +122,31 @@ public class FormsPage extends BasePage {
         typeInto(addressField, address);
     }
 
-    public void setStateField(String stateName){
-        clickOn(stateField);
-//        clickOn(stateField);
-//        withAction().moveToElement(stateField).sendKeys(Keys.ARROW_DOWN).click().perform();
-    }
 
-    public void getTheState(String stateName){
-        for(WebElement element : listOfStates){
-            if(element.findElement(By.id("react-select-5-option")).getText().equalsIgnoreCase(stateName))
-                element.findElement(By.id("react-select-5-option")).click();
+    public void getTheState(String stateName) {
+        clickOn(stateField);
+        for (WebElement element : listOfStates) {
+            System.out.println(listOfStates.size());
+            if (element.getText().equalsIgnoreCase(stateName)) {
+                clickOn(element);
+                break;
+            }
         }
     }
 
-    public void setCityField(){
-        cityField.select().byVisibleText("Noida");
+
+    public void getTheCity(String city) {
+        clickOn(cityField);
+        for (WebElement element : listOfCities) {
+            if (element.getText().equalsIgnoreCase(city)) {
+                clickOn(element);
+                break;
+            }
+        }
     }
 
     public void clickOnSubmitButton(){
-        clickOn(submitButton);
+        firstNameField.sendKeys(Keys.ENTER);
     }
 
 

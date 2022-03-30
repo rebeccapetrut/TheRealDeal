@@ -65,18 +65,13 @@ public class FormsSteps extends BaseSteps {
     }
 
     @Step
-    public void setStateField(String stateName){
-        formsPage.setStateField(stateName);
-    }
-
-    @Step
     public void getTheState(String stateName){
         formsPage.getTheState(stateName);
     }
 
     @Step
-    public void setCityField(){
-        formsPage.setCityField();
+    public void getTheCity(String city){
+        formsPage.getTheCity(city);
     }
 
     @Step

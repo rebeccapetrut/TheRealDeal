@@ -179,7 +179,7 @@ public class ElementsSteps extends BaseSteps {
 
     @Step
     public void verifyIfRecordWasDeleted(String firstName){
-        Assert.assertFalse("Record not deleted", elementsPage.verifyIfRecordWasDeleted(firstName));
+        Assert.assertTrue("Record not deleted", elementsPage.verifyIfRecordWasDeleted(firstName));
     }
 
     @Step
@@ -240,6 +240,46 @@ public class ElementsSteps extends BaseSteps {
     @Step
     public void verifyIfTheNewTabIsOpened(){
         Assert.assertTrue(elementsPage.verifyIfTheNewTabIsOpened());
+    }
+
+    @Step
+    public void clickOnDynamicPropertiesButton(){
+        elementsPage.clickOnDynamicPropertiesButton();
+    }
+
+    @Step
+    public void clickOnEnableAfterButton(){
+        elementsPage.clickOnEnableAfterButton();
+    }
+
+    @Step
+    public void verifyIfTheButtonIsEnabled(){
+        Assert.assertTrue(elementsPage.verifyIfTheButtonIsEnabled());
+    }
+
+    @Step
+    public void waitForTheColorChangeButton(){
+        elementsPage.waitForTheColorChangeButton();
+    }
+
+    @Step
+    public void verifyIfTheColorWasChanged(){
+        Assert.assertTrue(elementsPage.verifyIfTheColorWasChanged());
+    }
+
+    @Step
+    public void clickOnVisibleAfterButton(){
+        elementsPage.clickOnVisibleAfterButton();
+    }
+
+    @Step
+    public void verifyIfTheVisibleAfterButtonIsPresent(){
+        Assert.assertTrue(elementsPage.verifyIfTheVisibleAfterButtonIsPresent());
+    }
+
+    @Step
+    public void scrollThePageDown(){
+        elementsPage.scrollToPageBottom();
     }
 
 

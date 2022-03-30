@@ -3,6 +3,7 @@ package com.pages;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 
 import java.util.List;
@@ -142,6 +143,18 @@ public class ElementsPage extends BasePage {
     @FindBy(id = "simpleLink")
     private WebElementFacade homeLinkButton;
 
+    @FindBy(css = ".element-list.collapse.show li:nth-child(9)")
+    private WebElementFacade dynamicPropertiesButton;
+
+    @FindBy(id = "enableAfter")
+    private WebElementFacade enableAfterButton;
+
+    @FindBy(id = "colorChange")
+    private WebElementFacade colorChangeButton;
+
+    @FindBy(id = "visibleAfter")
+    private WebElementFacade visibleAfterButton;
+
 
 
 
@@ -174,10 +187,7 @@ public class ElementsPage extends BasePage {
     }
 
     public boolean isVerificationMessagePresent(){
-        if(verificationMessage.isPresent()){
-            return true;
-        }
-        return false;
+        return verificationMessage.isPresent();
     }
 
     public void verifyDatesAreCorrect(String userName, String email, String address, String permanentAddress){
@@ -248,10 +258,7 @@ public class ElementsPage extends BasePage {
     }
 
     public boolean verifyIfYesSuccessMessageIsDisplayedCorrectly(){
-        if(successMessage.getText().equals(yesTextFromRadioButton.getText())){
-            return true;
-        }
-        return false;
+        return successMessage.getText().equals(yesTextFromRadioButton.getText());
     }
 
     public void clickOnImpressiveRadioButton(){
@@ -259,10 +266,7 @@ public class ElementsPage extends BasePage {
     }
 
     public boolean verifyIfImpressiveSuccessMessageIsDisplayedCorrectly(){
-        if(successMessage.getText().equals(impressiveTextFromRadioButton.getText())){
-            return true;
-        }
-        return false;
+        return successMessage.getText().equals(impressiveTextFromRadioButton.getText());
     }
 
     public void verifyNoRadioButtonIsNotClickable(){
@@ -326,12 +330,12 @@ public class ElementsPage extends BasePage {
         salaryField.clear();
     }
 
-    // work it
+    // ??
     public boolean verifyIfTheEditWasMade(String firstName, String salary){
-        for(WebElementFacade element : listOfPeople){
-            if(element.findElement(By.cssSelector(".rt-td")).getText().equals(firstName) && element.findElement(By.cssSelector(".rt-td")).getText().equals(salary)){
+        for(WebElement element : listOfPeople){
+            System.out.println(element.getText());
+            if(element.getText().equals(firstName) && element.getText().equals(salary))
                 return true;
-            }
         }
         return false;
     }
@@ -348,10 +352,10 @@ public class ElementsPage extends BasePage {
 
     // de lucrat
     public boolean verifyIfRecordWasDeleted(String firstName){
-        if(listOfPeople.contains(firstName)){
-            return false;
+        if(element(By.cssSelector(".rt-td")).getText().equalsIgnoreCase(firstName)){
+            return true;
         }
-        return true;
+        return false;
     }
 
 
@@ -364,10 +368,7 @@ public class ElementsPage extends BasePage {
     }
 
     public boolean verifyIfDoubleButtonWasPressed(){
-        if(doubleClickConfirmation.isPresent()){
-            return true;
-        }
-        return false;
+        return doubleClickConfirmation.isPresent();
     }
 
     public void clickOnRightClickButton(){
@@ -375,10 +376,7 @@ public class ElementsPage extends BasePage {
     }
 
     public boolean verifyIfRightButtonWasPressed(){
-        if(rightClickConfirmation.isPresent()){
-            return true;
-        }
-        return false;
+        return rightClickConfirmation.isPresent();
     }
 
     public void clickOnClickMeButton(){
@@ -386,10 +384,7 @@ public class ElementsPage extends BasePage {
     }
 
     public boolean verifyIfDynamicButtonWasPressed(){
-        if(dynamicClickConfirmation.isPresent()){
-            return true;
-        }
-        return false;
+        return dynamicClickConfirmation.isPresent();
     }
 
 
@@ -409,11 +404,39 @@ public class ElementsPage extends BasePage {
     }
 
     public boolean verifyIfTheNewTabIsOpened(){
-        if(newTabTitleVerification.isPresent()){
-            return true;
-        }
-        return false;
+        return newTabTitleVerification.isPresent();
     }
+
+    public void clickOnDynamicPropertiesButton(){
+        clickOn(dynamicPropertiesButton);
+    }
+
+    public void clickOnEnableAfterButton(){
+        enableAfterButton.waitUntilClickable().click();
+    }
+
+    public boolean verifyIfTheButtonIsEnabled(){
+        return enableAfterButton.isEnabled();
+    }
+
+    public void waitForTheColorChangeButton(){
+        waitFor(5).seconds();
+    }
+
+    public boolean verifyIfTheColorWasChanged(){
+       return element(".mt-4.text-danger.btn.btn-primary").isClickable();
+    }
+
+    public void clickOnVisibleAfterButton(){
+        waitFor(visibleAfterButton).click();
+    }
+
+    public boolean verifyIfTheVisibleAfterButtonIsPresent(){
+        return visibleAfterButton.isPresent();
+    }
+
+
+
 
 
 

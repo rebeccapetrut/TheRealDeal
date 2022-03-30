@@ -10,6 +10,7 @@ public class BaseSteps extends ScenarioSteps {
     public AlertsFrameWindowsPage alertsFrameWindowsPage;
     public WidgetsPage widgetsPage;
     public InteractionsPage interactionsPage;
+    public BookStoreApplicationPage bookStoreApplicationPage;
 
 
 }

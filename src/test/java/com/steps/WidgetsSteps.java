@@ -21,8 +21,8 @@ public class WidgetsSteps extends BaseSteps {
     }
 
     @Step
-    public void verifyIfFirstTextIsDisplayed(){
-        widgetsPage.verifyIfFirstTextIsDisplayed();
+    public void verifyIfFirstTextIsDisplayed(String text){
+        widgetsPage.verifyIfFirstTextIsDisplayed(text);
     }
 
     @Step
@@ -96,8 +96,18 @@ public class WidgetsSteps extends BaseSteps {
     }
 
     @Step
-    public void slideTheSlider(){
-        widgetsPage.slideTheSlider();
+    public void slideTheSlider(int sliderValue){
+        widgetsPage.slideTheSlider(sliderValue);
+    }
+
+    @Step
+    public void hooverOverTheSliderButton(){
+        widgetsPage.hooverOverTheSliderButton();
+    }
+
+    @Step
+    public void verifyIfTheSliderMovesLikeJagger(){
+        Assert.assertTrue(widgetsPage.verifyIfTheSliderMovesLikeJagger());
     }
 
     @Step
@@ -190,13 +200,13 @@ public class WidgetsSteps extends BaseSteps {
     }
 
     @Step
-    public void selectValueFromFirstDropdown(){
-        widgetsPage.selectValueFromFirstDropdown();
+    public void setTheFirstDropDownValue(String value){
+        widgetsPage.setTheFirstDropDownValue(value);
     }
 
     @Step
-    public void selectTitleFromTitleDropdown(){
-        widgetsPage.selectTitleFromTitleDropdown();
+    public void setTheTitleDropdown(String titleValue){
+        widgetsPage.setTheTitleDropdown(titleValue);
     }
 
     @Step
@@ -213,6 +223,68 @@ public class WidgetsSteps extends BaseSteps {
     public void selectFromCarsSelector(){
         widgetsPage.selectFromCarsSelector();
     }
+
+    @Step
+    public void clickOnDatePickerButton(){
+        widgetsPage.clickOnDatePickerButton();
+    }
+
+    @Step
+    public void clickOnDateFirstField(){
+        widgetsPage.clickOnDateFirstField();
+    }
+
+    @Step
+    public void setMonthFromFirstField(){
+        widgetsPage.setMonthFromFirstField();
+    }
+
+    @Step
+    public void setYearFromFirstField(){
+        widgetsPage.setYearFromFirstField();
+    }
+
+    @Step
+    public void clickOnDateAndTimeSelector(){
+        widgetsPage.clickOnDateAndTimeSelector();
+    }
+
+    @Step
+    public void getTheMonthSet(String month){
+        widgetsPage.getTheMonthSet(month);
+    }
+
+    @Step
+    public void getTheYearSet(String year){
+        widgetsPage.getTheYearSet(year);
+    }
+
+    @Step
+    public void getTheHourSet(String hour){
+        widgetsPage.getTheHourSet(hour);
+    }
+
+    @Step
+    public void clickOnMonthDropdownButton(){
+        widgetsPage.clickOnMonthDropdownButton();
+    }
+
+    @Step
+    public void clickOnYearDropDownButton(){
+        widgetsPage.clickOnYearDropDownButton();
+    }
+
+    @Step
+    public void setDateFromFirstField(int date){
+        widgetsPage.setDateFromFirstField(date);
+    }
+
+    @Step
+    public void verifyIfTheDateIsCorrect(String birthDate){
+        Assert.assertEquals(birthDate, widgetsPage.verifyIfTheDateIsCorrect());
+    }
+
+
 
 
 

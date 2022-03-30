@@ -55,13 +55,13 @@ public class ElementsTest extends BaseTest {
     }
 
     @Test
-    public void checkThatNoRadioButtonIsDisable(){
+    public void checkThatNoRadioButtonIsDisableTest(){
         elementsSteps.clickOnElementsButton();
         elementsSteps.clickOnRadioButton();
         elementsSteps.verifyNoRadioButtonIsNotClickable();
     }
 
-    // ? assertul
+
     @Test
     public void typeIntoWebTablesTest() {
         elementsSteps.clickOnElementsButton();
@@ -72,14 +72,14 @@ public class ElementsTest extends BaseTest {
         elementsSteps.setEmailField("rebecapetrut@mailinator.com");
         elementsSteps.setAgeField("24");
         elementsSteps.setSalaryField("10");
-        elementsSteps.setDepartmentField("QA");
+        elementsSteps.setDepartmentField("Testing");
         elementsSteps.clickOnSubmitWebTablesButton();
         elementsSteps.verifyNewPersonIsAdded("Rebeca");
     }
 
-    // de lucrat la assert
+    // assert
     @Test
-    public void modifyFieldFromRecord() {
+    public void modifyFieldFromRecordTest() {
         elementsSteps.clickOnElementsButton();
         elementsSteps.clickOnWebTablesButton();
         elementsSteps.clickOnAddButton();
@@ -88,7 +88,7 @@ public class ElementsTest extends BaseTest {
         elementsSteps.setEmailField("rebecapetrut@mailinator.com");
         elementsSteps.setAgeField("24");
         elementsSteps.setSalaryField("10");
-        elementsSteps.setDepartmentField("QA");
+        elementsSteps.setDepartmentField("Testing");
         elementsSteps.clickOnSubmitWebTablesButton();
         elementsSteps.verifyNewPersonIsAdded("Rebeca");
         elementsSteps.editASpecificRecord("Rebeca");
@@ -99,9 +99,9 @@ public class ElementsTest extends BaseTest {
     }
 
 
-    //verificat assert daca e ok logica
+    // assert
     @Test
-    public void deleteASpecificRecord() {
+    public void deleteASpecificRecordTest() {
         elementsSteps.clickOnElementsButton();
         elementsSteps.clickOnWebTablesButton();
         elementsSteps.clickOnAddButton();
@@ -110,7 +110,7 @@ public class ElementsTest extends BaseTest {
         elementsSteps.setEmailField("rebecapetrut@mailinator.com");
         elementsSteps.setAgeField("24");
         elementsSteps.setSalaryField("10");
-        elementsSteps.setDepartmentField("QA");
+        elementsSteps.setDepartmentField("Testing");
         elementsSteps.clickOnSubmitWebTablesButton();
         elementsSteps.verifyNewPersonIsAdded("Rebeca");
         elementsSteps.deleteASpecificRecord("Alden");
@@ -146,7 +146,7 @@ public class ElementsTest extends BaseTest {
     }
 
     @Test
-    public void clickOnLinksButton(){
+    public void clickOnLinksButtonTest(){
         elementsSteps.clickOnElementsButton();
         elementsSteps.clickOnCloseAddButton();
         elementsSteps.clickOnLinksButton();
@@ -154,6 +154,37 @@ public class ElementsTest extends BaseTest {
         elementsSteps.switchToNewWindow();
         elementsSteps.verifyIfTheNewTabIsOpened();
     }
+
+    @Test
+    public void clickOnEnableAfterButtonTest(){
+        elementsSteps.clickOnElementsButton();
+        elementsSteps.clickOnCloseAddButton();
+        elementsSteps.scrollThePageDown();
+        elementsSteps.clickOnDynamicPropertiesButton();
+        elementsSteps.clickOnEnableAfterButton();
+        elementsSteps.verifyIfTheButtonIsEnabled();
+    }
+
+    @Test
+    public void waitForTheColorChangeButtonTest(){
+        elementsSteps.clickOnElementsButton();
+        elementsSteps.clickOnCloseAddButton();
+        elementsSteps.scrollThePageDown();
+        elementsSteps.clickOnDynamicPropertiesButton();
+        elementsSteps.waitForTheColorChangeButton();
+        elementsSteps.verifyIfTheColorWasChanged();
+    }
+
+    @Test
+    public void clickOnVisibleAfterButtonTest(){
+        elementsSteps.clickOnElementsButton();
+        elementsSteps.clickOnCloseAddButton();
+        elementsSteps.scrollThePageDown();
+        elementsSteps.clickOnDynamicPropertiesButton();
+        elementsSteps.clickOnVisibleAfterButton();
+        elementsSteps.verifyIfTheVisibleAfterButtonIsPresent();
+    }
+
 
 
 

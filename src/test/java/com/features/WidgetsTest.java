@@ -1,16 +1,26 @@
 package com.features;
 
+
 import org.junit.Test;
+import org.w3c.dom.Document;
+
+import static com.pages.BasePage.convertXMLFileToXMLDoc;
+
 
 public class WidgetsTest extends BaseTest {
 
+    // xml file
     @Test
     public void clickOnFirstTextTest(){
+        String inputXMLFile = "/Users/petrutrebecca/Desktop/TheRealDeal/texts.xml";
+        Document xmlDoc = convertXMLFileToXMLDoc( inputXMLFile );
+        String text = xmlDoc.getFirstChild().getTextContent();
+
         widgetsSteps.clickOnWidgetsButton();
         widgetsSteps.scrollThePageDown();
         widgetsSteps.clickOnAccordianButton();
         widgetsSteps.clickOnFirstTextTitle();
-        widgetsSteps.verifyIfFirstTextIsDisplayed();
+        widgetsSteps.verifyIfFirstTextIsDisplayed(text);
     }
 
     @Test
@@ -31,17 +41,17 @@ public class WidgetsTest extends BaseTest {
         widgetsSteps.verifyIfThirdTextIsDisplayed();
     }
 
-    // assert
+
     @Test
     public void setMultipleInputColorFieldTest(){
         widgetsSteps.clickOnWidgetsButton();
         widgetsSteps.scrollThePageDown();
         widgetsSteps.clickOnAutoCompleteButton();
         widgetsSteps.setMultipleInputColorField();
-        widgetsSteps.verifyIfColorWasAdded("red");
+        widgetsSteps.verifyIfColorWasAdded("yellow");
     }
 
-    // le sterge pe toate, nu doar una
+
     @Test
     public void deleteAColorFromMultipleInputColorFieldTest(){
         widgetsSteps.clickOnWidgetsButton();
@@ -74,13 +84,14 @@ public class WidgetsTest extends BaseTest {
     }
 
 
-    // selector slider
     @Test
     public void slideTheSliderTest(){
         widgetsSteps.clickOnWidgetsButton();
         widgetsSteps.scrollThePageDown();
         widgetsSteps.clickOnSliderButton();
-        widgetsSteps.slideTheSlider();
+        widgetsSteps.slideTheSlider(0);
+        widgetsSteps.hooverOverTheSliderButton();
+        widgetsSteps.verifyIfTheSliderMovesLikeJagger();
 
     }
 
@@ -147,12 +158,43 @@ public class WidgetsTest extends BaseTest {
         widgetsSteps.clickOnWidgetsButton();
         widgetsSteps.scrollThePageDown();
         widgetsSteps.clickOnSelectMenuButton();
-        widgetsSteps.selectValueFromFirstDropdown();
-        widgetsSteps.selectTitleFromTitleDropdown();
+        widgetsSteps.setTheFirstDropDownValue("Group 2, option 1");
+        widgetsSteps.setTheTitleDropdown("Mrs.");
         widgetsSteps.selectColorFromOldStyleSelectDropdown();
         widgetsSteps.selectFromMultiselectDropdown();
         widgetsSteps.selectFromCarsSelector();
     }
+
+    // int/string
+    @Test
+    public void setDateFromFirstField(){
+        widgetsSteps.clickOnWidgetsButton();
+        widgetsSteps.scrollThePageDown();
+        widgetsSteps.clickOnDatePickerButton();
+        widgetsSteps.clickOnDateFirstField();
+        widgetsSteps.setMonthFromFirstField();
+        widgetsSteps.setYearFromFirstField();
+        widgetsSteps.setDateFromFirstField(15);
+        widgetsSteps.verifyIfTheDateIsCorrect("07/15/1997");
+    }
+
+    //time
+    @Test
+    public void setDateFromTheSecondField() {
+        widgetsSteps.clickOnWidgetsButton();
+        widgetsSteps.scrollThePageDown();
+        widgetsSteps.clickOnDatePickerButton();
+        widgetsSteps.clickOnDateAndTimeSelector();
+        widgetsSteps.clickOnMonthDropdownButton();
+        widgetsSteps.getTheMonthSet("July");
+        widgetsSteps.clickOnYearDropDownButton();
+        widgetsSteps.getTheYearSet("2020");
+        widgetsSteps.setDateFromFirstField(15);
+        widgetsSteps.getTheHourSet("17:00");
+        widgetsSteps.verifyIfTheDateIsCorrect("07/15/1997");
+
+    }
+
 
 
 }
